@@ -1,0 +1,36 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>puppetlabs.cprice</groupId>
+    <artifactId>jvm-processbuilder-leak</artifactId>
+    <version>0.0.1</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.0.0.Final</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+			            <!--<argument>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000</argument>-->
+                        <argument>-Xms64m</argument>
+                        <argument>-Xmx64m</argument>
+                        <argument>-XX:+TraceClassUnloading</argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>com.puppetlabs.processbuilder.MemLeak</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
