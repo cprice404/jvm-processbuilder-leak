@@ -5,6 +5,7 @@ import com.puppetlabs.processbuilder.reproducers.ProcessBuilderWrapperReproducer
 import com.puppetlabs.processbuilder.reproducers.Reproducer;
 
 import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class MemLeakDriver {
@@ -37,7 +38,7 @@ public class MemLeakDriver {
         System.out.println(System.getProperty("java.vm.version"));
         System.out.println(System.getProperty("java.vm.name"));
         System.out.println(System.getProperty("java.runtime.name"));
-        long duration = TimeUnit.DAYS.toMillis(1);
+        long duration = TimeUnit.MINUTES.toMillis(30);
         long start = System.currentTimeMillis();
 
         String reproducerType = System.getProperty("reproType");
@@ -48,14 +49,16 @@ public class MemLeakDriver {
         Reproducer r = getReproducerForType(reproducerType);
         Thread.sleep(2000);
 
-//        //Reproducer r = new ProcessBuilderReproducer();
-//        Reproducer r = new ProcessBuilderWrapperReproducer();
         int i = 0;
         do {
             i++;
             System.out.println("iteration " + i);
             r.execute();
         } while ((System.currentTimeMillis() - start) <= duration);
+
+        System.out.println("Exiting loop; sleeping.");
+        CountDownLatch latch = new CountDownLatch(1);
+        latch.await();
 
     }
 
