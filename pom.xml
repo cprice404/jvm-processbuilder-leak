@@ -12,6 +12,10 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <reproType>pbw</reproType>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -22,12 +26,13 @@
                     <executable>java</executable>
                     <arguments>
 			            <!--<argument>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8000</argument>-->
-                        <argument>-Xms64m</argument>
-                        <argument>-Xmx64m</argument>
+                        <argument>-Xms32m</argument>
+                        <argument>-Xmx32m</argument>
                         <argument>-XX:+TraceClassUnloading</argument>
+                        <argument>-DreproType=${reproType}</argument>
                         <argument>-classpath</argument>
                         <classpath/>
-                        <argument>com.puppetlabs.processbuilder.MemLeak</argument>
+                        <argument>com.puppetlabs.processbuilder.MemLeakDriver</argument>
                     </arguments>
                 </configuration>
             </plugin>
