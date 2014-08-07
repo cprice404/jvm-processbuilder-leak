@@ -9,6 +9,10 @@ We have noticed that in some recent versions of the Oracle JDK and OpenJDK on
 native memory whenever an external process is executed.  The code in this repository
 is intended to provide a minimal repro case to illustrate the leak.
 
+Here is a graph showing memory usage of various runs of this code over time:
+
+https://docs.google.com/a/puppetlabs.com/spreadsheets/d/14U1lMIj4b3ZitiIONuetIiFWsr2XoaIAWEOOt-zoohI/edit#gid=0
+
 For Oracle JDK, the leak does *not* appear to be present in 7u45, but *does* appear
 to be present in 7u55.  For OpenJDK, the leak does *not* appear to be present in 7u55,
 but *does* appear to be present in 7u55.  (TODO: add link to graph)
