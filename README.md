@@ -60,3 +60,10 @@ and closes the output/error streams of the spawned process.  It uses wrapper aro
 consuming and closing those streams.  The wrapper also makes sure that those
 background threads are joined (and thus finished with their work) before returning
 control to the main thread.
+
+    mvn -DreproType=up exec:exec
+    
+This will circumvent the `ProcessBuilder` class and call into the lower-level `UNIXProcess`
+class directly, to try to make sure that the bug isn't in the `ProcessBuilder` code.  The
+`UNIXProcess` is also wrapped in order to make sure the output/error streams are consumed
+and closed.
