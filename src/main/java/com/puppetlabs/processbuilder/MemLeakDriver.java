@@ -42,7 +42,7 @@ public class MemLeakDriver {
         System.out.println(System.getProperty("java.vm.version"));
         System.out.println(System.getProperty("java.vm.name"));
         System.out.println(System.getProperty("java.runtime.name"));
-        long duration = TimeUnit.MINUTES.toMillis(30);
+        long duration = TimeUnit.DAYS.toMillis(1);
         long start = System.currentTimeMillis();
 
         String reproducerType = System.getProperty("reproType");
