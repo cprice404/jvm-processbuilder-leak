@@ -11,7 +11,7 @@ is intended to provide a minimal repro case to illustrate the leak.
 
 Here is a graph showing memory usage of various runs of this code over time:
 
-https://docs.google.com/a/puppetlabs.com/spreadsheets/d/14U1lMIj4b3ZitiIONuetIiFWsr2XoaIAWEOOt-zoohI/edit#gid=0
+https://docs.google.com/a/puppetlabs.com/spreadsheets/d/1jBZKaOfi_YgbeLfoUeJUVnYfIYMe09OFRBGNILHXm8o/edit#gid=0
 
 For Oracle JDK, the leak does *not* appear to be present in 7u45, but *does* appear
 to be present in 7u55.  (I believe, though I have less data, that the leak is *not* present in Oracle 7u51.)  For OpenJDK, the leak does *not* appear to be present in 7u55,
